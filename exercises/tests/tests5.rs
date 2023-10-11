@@ -21,7 +21,6 @@
 //
 // Execute `rustlings hint tests5` or use the `hint` watch subcommand for a
 // hint.
-
 // I AM NOT DONE
 
 /// # Safety
@@ -31,9 +30,18 @@ unsafe fn modify_by_address(address: usize) {
     // TODO: Fill your safety notice of the code block below to match your
     // code's behavior and the contract of this function. You may use the
     // comment of the test below as your format reference.
-    unsafe {
-        todo!("Your code goes here")
-    }
+
+    // This unsafe block provides a way to directly manipulate memory by dereferencing a raw pointer.
+    // In this context, it is used to modify the value at the specified memory address pointed to by
+    // `address`. The pointer is cast to a mutable reference to `u32`, allowing modification of the
+    // value. This operation must be done with extreme care, as it has the potential to introduce
+    // memory corruption and other issues if not used correctly.
+
+    // The caller is expected to provide a valid `address` that points to a mutable `u32` value.
+    // Modifying memory in this manner requires a deep understanding of Rust's memory model and
+    // is subject to strict safety requirements.
+    let ptr = address as *mut u32;
+    *ptr = 0xAABBCCDD;
 }
 
 #[cfg(test)]
